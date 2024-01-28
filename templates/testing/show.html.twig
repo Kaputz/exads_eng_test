@@ -1,0 +1,9 @@
+{% extends 'testing/index.html.twig' %}
+
+{% block title %}{{ parent() }} - A/B Testing {{ promotion_name }}{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <h1 class="mt-5">Promotion: {{ promotion_name }}</h1>
+    <p class="lead">Design: {{ design.designName }}</p>
+{% endblock %}

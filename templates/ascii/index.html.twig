@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - ASCII Array{% endblock %}
+
+{% block body %}
+    <div>
+        <h1 class="mt-5">2. ASCII Array</h1>
+        <p class="lead">Write a PHP script to generate a random array containing all the ASCII characters from comma (“,”) to pipe (“|”).<br>
+                        Then randomly remove and discard an arbitrary element from this newly generated array.<br>
+                        Write the code to efficiently determine the missing character.<br></p>
+    </div>
+    <div>
+        <p style="margin-top:40px"><span class="fw-bold">The missing character is:</span> {{ missing_chr }}</p>
+        <table class="table">
+            <th scope="col">All the other values:</th>
+            {% for ascii_element in ascii_table %}
+                <tr>
+                    <td>{{ ascii_element }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

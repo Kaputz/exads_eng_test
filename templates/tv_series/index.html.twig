@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - TV Series{% endblock %}
+
+{% block body %}
+    <div>
+        <h1 class="mt-5">3. TV Series</h1>
+        <p class="lead">Populate a MySQL (InnoDB) database with data from at least 3 TV Series using the following structure:<br></p>
+        <p><code>tv_series -> (id, title, channel, gender);<br>
+                &nbsp;tv_series_intervals -> (id_tv_series, week_day, show_time);</code></p>
+        <p class="lead">Using OOP, write a code that tells when the next TV Series will air based on the current time-date or an inputted time-date, and that can be optionally filtered by TV Series title.</p>
+    </div>
+    <div>
+        <h1 class="mt-5">Search by:</h1>
+
+        {{ form_start(search_form, { 'attr': { 'class' : 'row' }}) }}
+            {{ form_errors(search_form) }}
+
+            <div class="col-md-3">
+                {{ form_row(search_form.date, { 'attr': { 'value': search_date|date("Y-m-d H:i") } }) }}
+            </div>
+
+            {{ form_row(search_form.title) }}
+
+            {{ form_row(search_form.search) }}
+        {{ form_end(search_form) }}
+
+        <p>
+            <span class="fw-bold">Next TV series:</span> 
+            {% if tv_series %}
+                {{ tv_series.idTvSeries.title }}
+            {% else %}
+                Search returned no results.
+            {% endif %}
+            <br>
+            <span class="fw-bold">Airing:</span>
+            {% if tv_series %}
+                {{ tv_series.weekDay }} - {{ tv_series.showTime|date("H:i") }}
+            {% else %}
+                N/A
+            {% endif %} 
+        </p>
+        
+        {% if all_tv_series is defined %}
+            <table class="table" style="margin-top:40px">
+                <thead>
+                    <tr>
+                        <th scope="col">TV Series:</th>
+                        <th scope="col">Channel</th>
+                        <th scope="col">Genre</th>
+                        <th scope="col">Intervals</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for series in all_tv_series %}
+                    <tr>
+                        <td class="d-none">{{ series.id }}</td>
+                        <td>{{ series.title }}</td>
+                        <td>{{ series.channel }}</td>
+                        <td>{{ series.gender }}</td>
+                        <td>
+                            {% for interval in series.TvSeriesIntervals %}
+                                {{ interval.WeekDay }} - {{ interval.ShowTime|format_datetime('none', 'short') }}<br>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %} 
+    </div>
+{% endblock %}

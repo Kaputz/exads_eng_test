@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ parent() }} - Prime Numbers{% endblock %}
+
+{% block body %}
+    <div>
+        <h1 class="mt-5">1. Prime Numbers</h1>
+        <p class="lead">Write a PHP script that prints all integer values from 1 to 100.<br>
+                        Beside each number, print the numbers it is a multiple of (inside brackets and comma-separated). <br>
+                        If only multiple of itself then print “[PRIME]”.</p>
+    </div>
+    <div>
+        <table class="table">
+        {% for number, results in numbers %}
+            <tr>
+                <td>{{ number }}</td>
+                <td>[{{ results|join(', ') }}]</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+{% endblock %}
+
+

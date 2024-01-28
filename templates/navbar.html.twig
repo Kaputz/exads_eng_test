@@ -1,0 +1,24 @@
+
+<!-- Fixed navbar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="{{ path('homepage') }}">EXADS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_prime_numbers') }}">Prime</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_ascii') }}">ASCII</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_tv_series') }}">TV Series</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_testing') }}">A/B Testing</a>
+        </li>
+    </ul>
+    </div>
+</nav>
